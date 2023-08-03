@@ -18,17 +18,15 @@ export class UserRegistrationService {
   constructor(private http: HttpClient) {
   }
   //Making the api call for the user registration endpoint
-  public userRegistration(userDetails: any): Observable<any> {
+  userRegistration(userDetails: any): Observable<any> {
     console.log(userDetails);
-    return this.http.post(apiUrl + 'users', {
-      body: JSON.stringify(userDetails)
-    }).pipe(
+    return this.http.post(apiUrl + 'users', userDetails).pipe(
       catchError(this.handleError)
     );
   }
 
   //Making an API request to user login
-  public userLogin(userDetails: any): Observable<any> {
+  userLogin(userDetails: any): Observable<any> {
     return this.http.post(apiUrl + 'login', {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
@@ -40,7 +38,7 @@ export class UserRegistrationService {
   }
 
   //making a request to get all movies
-  public getAllMovies() : Observable<any> {
+  getAllMovies() : Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get(apiUrl + 'movies', {
       headers: new HttpHeaders({
@@ -53,7 +51,7 @@ export class UserRegistrationService {
   }
 
   //Making an API request for a specific movie by title
-  public getSpecificMovie(movieTitle: string) : Observable<any> {
+  getSpecificMovie(movieTitle: string) : Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get(apiUrl + 'movies/' + movieTitle, {
       headers: new HttpHeaders({
@@ -66,7 +64,7 @@ export class UserRegistrationService {
   }
 
   //Making an API request for a specific director by name
-  public getDirector(directorName: string) : Observable<any> {
+  getDirector(directorName: string) : Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get(apiUrl + 'movies/directors/' + directorName, {
       headers: new HttpHeaders({
@@ -79,7 +77,7 @@ export class UserRegistrationService {
   }
 
   //Making an API request for a specific genre by name
-  public getGenre(genreName: string): Observable<any> {
+  getGenre(genreName: string): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get(apiUrl + 'movies/genre/' + genreName, {
       headers: new HttpHeaders({
@@ -92,7 +90,7 @@ export class UserRegistrationService {
   }
 
   //Making an API request to add a movie to the users favourite list
-  public addMovieToFavorite(userID: string, movieID: string): Observable<any> {
+  addMovieToFavorite(userID: string, movieID: string): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.post(apiUrl + 'users/' + userID + '/movies/' + movieID, {
       headers : new HttpHeaders ({
@@ -105,7 +103,7 @@ export class UserRegistrationService {
   }
 
   //Making an API request to edit user's information
-  public editUser(username: string, password: string,
+  editUser(username: string, password: string,
      email: string, birthday: Date): Observable<any> {
       const token = localStorage.getItem('token');
       return this.http.put(apiUrl + 'users/' + username, {
@@ -125,7 +123,7 @@ export class UserRegistrationService {
   }
 
   //Making an API request to remove a movie from the favorite movies
-  public removeMovieFromFavorite(userID: string, movieID: string): Observable<any> {
+  removeMovieFromFavorite(userID: string, movieID: string): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.put(apiUrl + 'users/' + userID + '/movies/' + movieID, {
       headers: new HttpHeaders({
@@ -138,7 +136,7 @@ export class UserRegistrationService {
   }
 
   //Making an API request to delete user
-  public deleteUser(userID: string): Observable<any> {
+  deleteUser(userID: string): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.delete(apiUrl + 'users/' + userID, {
       headers: new HttpHeaders({
@@ -150,7 +148,7 @@ export class UserRegistrationService {
   }
   
   //Non-typed resopnse extraction
-  private extractResponseData(res: Response): any {
+  private extractResponseData(res: any): any {
     const body = res;
     return body || { }
   }
