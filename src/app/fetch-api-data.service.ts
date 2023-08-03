@@ -27,11 +27,10 @@ export class UserRegistrationService {
 
   //Making an API request to user login
   userLogin(userDetails: any): Observable<any> {
-    return this.http.post(apiUrl + 'login', {
+    return this.http.post(apiUrl + 'login', userDetails, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
-      }),
-      body: JSON.stringify(userDetails)
+      })
     }).pipe(
       catchError(this.handleError)
     )
