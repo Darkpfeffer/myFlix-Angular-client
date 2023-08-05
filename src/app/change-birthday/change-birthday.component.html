@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Change Birthday</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form>
+            <mat-form-field>
+                <input
+                    matInput
+                    [(ngModel)]="userData.Birthday"
+                    placeholder="Birthday"
+                    type="date"
+                    name="Birthday"
+                    required
+                >
+            </mat-form-field>
+            <mat-form-field>
+                <input
+                    matInput
+                    [(ngModel)]="userData.Password"
+                    type="password"
+                    placeholder="Password"
+                    name="Password"
+                    required
+                >
+            </mat-form-field>
+        </form>
+    </mat-card-content>
+    <mat-card-actions>
+        <button
+            mat-raised-button
+            (click)="changeBirthday()"
+            color="primary"
+            class="button-confirmation"
+        >
+            Submit
+        </button>
+    </mat-card-actions>
+</mat-card>

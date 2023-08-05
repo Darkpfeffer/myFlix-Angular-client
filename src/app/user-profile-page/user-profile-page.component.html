@@ -24,7 +24,12 @@
   >
     Change email address
   </button>
-  <button mat-menu-item>Change birthday</button>
+  <button 
+    mat-menu-item
+    (click)="openChangeBirthdayModal()"
+  >
+    Change birthday
+  </button>
   <button mat-menu-item>Delete account</button>
 </mat-menu>
 <p>Username: {{parsedUserData.Username}}</p>
