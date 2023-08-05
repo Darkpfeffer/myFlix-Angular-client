@@ -12,8 +12,8 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$myFlix-Angular-client-primary: mat.define-palette(mat.$indigo-palette);
-$myFlix-Angular-client-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$myFlix-Angular-client-primary: mat.define-palette(mat.$deep-purple-palette);
+$myFlix-Angular-client-accent: mat.define-palette(mat.$amber-palette, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
 $myFlix-Angular-client-warn: mat.define-palette(mat.$red-palette);
@@ -27,6 +27,10 @@ $myFlix-Angular-client-theme: mat.define-light-theme((
     warn: $myFlix-Angular-client-warn,
   )
 ));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component

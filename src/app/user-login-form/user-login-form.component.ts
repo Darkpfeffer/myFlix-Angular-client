@@ -2,6 +2,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+
 
   //To make API calls
 import { UserRegistrationService } from '../fetch-api-data.service'
@@ -18,7 +20,8 @@ export class UserLoginFormComponent implements OnInit{
   constructor(
     public fetchApiData: UserRegistrationService,
     public dialogRef: MatDialogRef<UserLoginFormComponent>,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    private router: Router
   ) {  }
 
   ngOnInit(): void {
@@ -37,6 +40,7 @@ export class UserLoginFormComponent implements OnInit{
       this.snackBar.open('Logged in successfully!', 'OK', {
         duration: 2000
       });
+      this.router.navigate(['movies'])
     }, (result) => {
       //Logic for failed login
       this.snackBar.open('Incorrect username or password.', 'OK', {

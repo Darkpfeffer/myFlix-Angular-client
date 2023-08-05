@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<p>Username: {{parsedUserData.Username}}</p>
+<p>Email: {{parsedUserData.Email}}</p>
+<p>Birthday: {{userBirthday}}</p>
+<p>Favorites:</p>
+<div style="display: flex;">
+    <mat-card 
+        *ngFor="let favoriteMovie of userFavorites;" 
+        style="flex: 1 1 auto">
+        <mat-card-header>
+            <mat-card-title>{{favoriteMovie.Title}}</mat-card-title>
+            <mat-card-subtitle>
+                Driected by: {{ favoriteMovie.Director.Name}}
+            </mat-card-subtitle>
+        </mat-card-header>
+        <mat-dialog-content>
+            <img mat-card-xl-image src="{{favoriteMovie.ImageURL}}" alt="{{favoriteMovie.Title}}"/>
+        </mat-dialog-content>
+        <mat-card-actions>
+            <button
+                mat-button
+                color="primary"
+            >
+            Genre
+            </button>
+            <button
+                mat-button
+                color="primary"
+            >
+                Director
+            </button>
+            <button
+                mat-button
+                color="primary"
+            >
+            Summary
+            </button>
+            <mat-icon>favorite_border</mat-icon>
+        </mat-card-actions>
+    </mat-card>
+</div>
