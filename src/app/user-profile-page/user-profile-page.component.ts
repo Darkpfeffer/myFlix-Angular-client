@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
   //Self-made components
 import { ChangeUsernameComponent } from '../change-username/change-username.component';
 import { ChangePasswordComponent } from '../change-password/change-password.component';
+import { ChangeEmailComponent } from '../change-email/change-email.component';
 
 @Component({
   selector: 'app-user-profile-page',
@@ -50,5 +51,10 @@ export class UserProfilePageComponent implements OnInit {
   //Opens change username modal
   openChangePasswordModal(): void {
     this.dialog.open(ChangePasswordComponent)
+  }
+
+  //Opens change username modal
+  openChangeEmailModal(): void {
+    this.dialog.open(ChangeEmailComponent)
   }
 }

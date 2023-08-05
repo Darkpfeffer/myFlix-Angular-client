@@ -24,6 +24,7 @@ import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { UserProfilePageComponent } from './user-profile-page/user-profile-page.component';
 import { ChangeUsernameComponent } from './change-username/change-username.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { ChangeEmailComponent } from './change-email/change-email.component';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
@@ -41,7 +42,8 @@ const appRoutes: Routes = [
     WelcomePageComponent,
     UserProfilePageComponent,
     ChangeUsernameComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    ChangeEmailComponent
   ],
   imports: [
     BrowserModule,
