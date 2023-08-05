@@ -3,7 +3,16 @@
     mat-raised-button
     color="primary"
     (click)="navigateToProfile()"
->Profile</button>
+>
+    Profile
+</button>
+<button
+    mat-raised-button
+    color="primary"
+    (click)="logout()"
+>
+    Logout
+</button>
 <div style="display: flex;">
     <mat-card 
         *ngFor="let movie of movies;" 
@@ -36,7 +45,20 @@
             >
             Summary
             </button>
-            <mat-icon>favorite_border</mat-icon>
+            <div *ngIf="userFavoritesID.includes(movie._id);">
+                <button
+                    mat-button
+                >
+                    <mat-icon>favorite</mat-icon>
+                </button>
+            </div>
+            <div *ngIf="!userFavoritesID.includes(movie._id);">
+                <button
+                    mat-button
+                >
+                    <mat-icon>favorite_border</mat-icon>
+                </button>
+            </div>
         </mat-card-actions>
     </mat-card>
 </div>

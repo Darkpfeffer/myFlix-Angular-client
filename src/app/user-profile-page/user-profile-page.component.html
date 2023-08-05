@@ -37,6 +37,13 @@
     Delete account
   </button>
 </mat-menu>
+<button
+    mat-raised-button
+    color="primary"
+    (click)="logout()"
+>
+    Logout
+</button>
 <p>Username: {{parsedUserData.Username}}</p>
 <p>Email: {{parsedUserData.Email}}</p>
 <p>Birthday: {{userBirthday}}</p>
@@ -73,7 +80,20 @@
             >
             Summary
             </button>
-            <mat-icon>favorite_border</mat-icon>
+            <div *ngIf="userFavoritesID.includes(favoriteMovie._id);">
+                <button
+                    mat-button
+                >
+                    <mat-icon>favorite</mat-icon>
+                </button>
+            </div>
+            <div *ngIf="!userFavoritesID.includes(favoriteMovie._id);">
+                <button
+                    mat-button
+                >
+                    <mat-icon>favorite_border</mat-icon>
+                </button>
+            </div>
         </mat-card-actions>
     </mat-card>
 </div>

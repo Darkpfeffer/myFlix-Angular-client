@@ -16,7 +16,7 @@ import { DeleteAccountComponent } from '../delete-account/delete-account.compone
 })
 export class UserProfilePageComponent implements OnInit {
   userData: any = localStorage.getItem('user');
-  parsedUserData = JSON.parse(this.userData)
+  parsedUserData = JSON.parse(this.userData);
   userBirthday = new Date(this.parsedUserData.Birthday).toLocaleDateString();
   storageMovies: any = localStorage.getItem('movies');
   movies = JSON.parse(this.storageMovies);
@@ -68,5 +68,11 @@ export class UserProfilePageComponent implements OnInit {
   //Opens delete account modal
   openDeleteAccountModal(): void {
     this.dialog.open(DeleteAccountComponent)
+  }
+
+  logout(): void {
+    this.router.navigate(['welcome']);
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
   }
 }
