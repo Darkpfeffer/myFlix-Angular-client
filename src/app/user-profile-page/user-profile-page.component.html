@@ -12,7 +12,12 @@
   >
     Change username
   </button>
-  <button mat-menu-item>Change password</button>
+  <button 
+    mat-menu-item
+    (click)="openChangePasswordModal()"
+  >
+    Change password
+  </button>
   <button mat-menu-item>Change email address</button>
   <button mat-menu-item>Change birthday</button>
   <button mat-menu-item>Delete account</button>
