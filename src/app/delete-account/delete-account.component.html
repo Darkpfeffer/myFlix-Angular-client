@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            Delete Account
+        </mat-card-title>
+        <mat-card-subtitle>
+            Are you sure you want to delete your account?
+        </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions>
+        <button
+            mat-button
+            color="primary"
+            (click)="deleteAccount()"
+        >
+            Yes
+        </button>
+        <button
+            mat-button
+            (click)="dontDeleteAccount()"
+        >
+            No
+        </button>
+    </mat-card-actions>
+</mat-card>

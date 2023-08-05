@@ -133,7 +133,7 @@ export class UserRegistrationService {
     const token = localStorage.getItem('token');
     return this.http.delete(apiUrl + 'users/' + userID, {
       headers: new HttpHeaders({
-        Authorization: 'Bearer' + token
+        Authorization: 'Bearer ' + token
       })
     }).pipe(
       catchError(this.handleError)

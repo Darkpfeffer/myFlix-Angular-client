@@ -26,6 +26,7 @@ import { ChangeUsernameComponent } from './change-username/change-username.compo
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { ChangeEmailComponent } from './change-email/change-email.component';
 import { ChangeBirthdayComponent } from './change-birthday/change-birthday.component';
+import { DeleteAccountComponent } from './delete-account/delete-account.component';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
@@ -45,7 +46,8 @@ const appRoutes: Routes = [
     ChangeUsernameComponent,
     ChangePasswordComponent,
     ChangeEmailComponent,
-    ChangeBirthdayComponent
+    ChangeBirthdayComponent,
+    DeleteAccountComponent
   ],
   imports: [
     BrowserModule,

@@ -7,6 +7,7 @@ import { ChangeUsernameComponent } from '../change-username/change-username.comp
 import { ChangePasswordComponent } from '../change-password/change-password.component';
 import { ChangeEmailComponent } from '../change-email/change-email.component';
 import { ChangeBirthdayComponent } from '../change-birthday/change-birthday.component';
+import { DeleteAccountComponent } from '../delete-account/delete-account.component';
 
 @Component({
   selector: 'app-user-profile-page',
@@ -62,5 +63,10 @@ export class UserProfilePageComponent implements OnInit {
   //Opens change birthday modal
   openChangeBirthdayModal(): void {
     this.dialog.open(ChangeBirthdayComponent)
+  }
+
+  //Opens delete account modal
+  openDeleteAccountModal(): void {
+    this.dialog.open(DeleteAccountComponent)
   }
 }

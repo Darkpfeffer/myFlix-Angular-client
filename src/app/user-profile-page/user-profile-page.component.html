@@ -30,7 +30,12 @@
   >
     Change birthday
   </button>
-  <button mat-menu-item>Delete account</button>
+  <button
+    mat-menu-item
+    (click)="openDeleteAccountModal()"
+  >
+    Delete account
+  </button>
 </mat-menu>
 <p>Username: {{parsedUserData.Username}}</p>
 <p>Email: {{parsedUserData.Email}}</p>
