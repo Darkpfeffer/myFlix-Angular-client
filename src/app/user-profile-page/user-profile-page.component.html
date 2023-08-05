@@ -1,4 +1,22 @@
 <!DOCTYPE html>
+<button
+    mat-raised-button
+    color="primary"
+    (click)="navigateToMovieList()"
+>Back to Movies</button>
+<button mat-button [matMenuTriggerFor]="menu">Settings</button>
+<mat-menu #menu="matMenu">
+  <button 
+    mat-menu-item
+    (click)="openChangeUsernameModal()"
+  >
+    Change username
+  </button>
+  <button mat-menu-item>Change password</button>
+  <button mat-menu-item>Change email address</button>
+  <button mat-menu-item>Change birthday</button>
+  <button mat-menu-item>Delete account</button>
+</mat-menu>
 <p>Username: {{parsedUserData.Username}}</p>
 <p>Email: {{parsedUserData.Email}}</p>
 <p>Birthday: {{userBirthday}}</p>

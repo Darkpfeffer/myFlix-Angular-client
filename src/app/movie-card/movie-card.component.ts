@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserRegistrationService } from '../fetch-api-data.service'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-movie-card',
@@ -11,7 +12,10 @@ export class MovieCardComponent implements OnInit {
 
   movies: any[] = []
 
-  constructor(public fetchMovies: UserRegistrationService) { }
+  constructor(
+    public fetchMovies: UserRegistrationService,
+    private router: Router
+    ) { }
 
 ngOnInit(): void {
   this.getMovies();
@@ -24,5 +28,9 @@ getMovies(): void {
     localStorage.setItem('movies', JSON.stringify(this.movies))
     return this.movies
   });
+}
+
+navigateToProfile(): void {
+  this.router.navigate(['profile'])
 }
 }

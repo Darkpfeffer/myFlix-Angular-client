@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<button
+    mat-raised-button
+    color="primary"
+    (click)="navigateToProfile()"
+>Profile</button>
 <div style="display: flex;">
     <mat-card 
         *ngFor="let movie of movies;" 

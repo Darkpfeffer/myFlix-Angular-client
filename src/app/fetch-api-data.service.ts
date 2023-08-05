@@ -102,20 +102,14 @@ export class UserRegistrationService {
   }
 
   //Making an API request to edit user's information
-  editUser(username: string, password: string,
-     email: string, birthday: Date): Observable<any> {
+  editUser(userData: any): Observable<any> {
       const token = localStorage.getItem('token');
-      return this.http.put(apiUrl + 'users/' + username, {
+      const user: any = localStorage.getItem('user');
+      const Username = JSON.parse(user).Username;
+      return this.http.put(apiUrl + 'users/' + Username, userData, {
         headers: new HttpHeaders({
-          Authorization: 'Bearer' + token
-        }),
-        body: JSON.stringify({
-          Username: username,
-          Password: password,
-          Email: email,
-          Birthday: birthday
-        }),
-        observe: 'body'
+          Authorization: 'Bearer ' + token
+        })
       }).pipe(
         catchError(this.handleError)
       )

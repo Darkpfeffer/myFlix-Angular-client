@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { UserRegistrationService } from '../fetch-api-data.service'
+import { Router } from '@angular/router';
+  //Material
+import { MatDialog } from '@angular/material/dialog';
+  //Self-made components
+import { ChangeUsernameComponent } from '../change-username/change-username.component';
 
 @Component({
   selector: 'app-user-profile-page',
@@ -15,15 +19,13 @@ export class UserProfilePageComponent implements OnInit {
   userFavoritesID: any[] = this.parsedUserData.FavoriteMovies;
   userFavorites: any [] = [];
 
+  constructor(
+    public dialog: MatDialog,
+    private router: Router
+  ) {}
+
   ngOnInit(): void {
     this.filterFavorites();
-    this.log();
-  }
-
-  log() {
-    console.log(this.userFavorites)
-    console.log(this.userFavoritesID)
-    console.log(this.movies)
   }
 
   filterFavorites() : any[] {
@@ -33,5 +35,14 @@ export class UserProfilePageComponent implements OnInit {
       }
     }
     return this.userFavorites
+  }
+
+  navigateToMovieList(): void{
+    this.router.navigate(['movies']);
+  }
+
+  //Opens change username modal
+  openChangeUsernameModal(): void {
+    this.dialog.open(ChangeUsernameComponent)
   }
 }

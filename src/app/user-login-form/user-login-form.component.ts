@@ -3,8 +3,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-
-
   //To make API calls
 import { UserRegistrationService } from '../fetch-api-data.service'
 
@@ -34,8 +32,6 @@ export class UserLoginFormComponent implements OnInit{
       console.log(result)
       localStorage.setItem('user', JSON.stringify(result.user))
       localStorage.setItem('token', result.token)
-      console.log(localStorage.getItem('user'))
-      console.log(localStorage.getItem('token'))
       this.dialogRef.close(); //The modal closes on success
       this.snackBar.open('Logged in successfully!', 'OK', {
         duration: 2000
