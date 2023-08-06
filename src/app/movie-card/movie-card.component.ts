@@ -63,12 +63,11 @@ export class MovieCardComponent implements OnInit {
   addToFavorites(userID: any, movieID: any): void {
     this.fetchMovies.addMovieToFavorite(userID, movieID)
       .subscribe((result) => {
-        console.log(result)
         this.snackBar.open('Added to favorites', 'OK', {
           duration: 2000
         });
-        window.location.reload();
         localStorage.setItem('user', JSON.stringify(result))
+        window.location.reload();
       }, (result) => {
         this.snackBar.open('Something went wrong', 'OK', {
           duration: 2000
@@ -76,5 +75,17 @@ export class MovieCardComponent implements OnInit {
       })
   }
 
-
+  removeFromFavorites(userID: any, movieID: any): void {
+    this.fetchMovies.removeMovieFromFavorite(userID, movieID).subscribe((result) => {
+      this.snackBar.open('Removed from favorites', 'OK', {
+        duration: 2000
+      });
+      localStorage.setItem('user', JSON.stringify(result.updatedUser));
+      window.location.reload();
+    }, (result) => {
+      this.snackBar.open('Something went wrong', 'OK', {
+        duration: 2000
+      })
+    })
+  }
 }

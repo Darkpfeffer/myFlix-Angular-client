@@ -120,11 +120,10 @@ export class UserRegistrationService {
   //Making an API request to remove a movie from the favorite movies
   removeMovieFromFavorite(userID: string, movieID: string): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.put(apiUrl + 'users/' + userID + '/movies/' + movieID, {
+    return this.http.put(apiUrl + 'users/' + userID + '/movies/' + movieID, '', {
       headers: new HttpHeaders({
-        Authorization: 'Bearer' + token
-      }),
-      observe: 'body'
+        Authorization: 'Bearer ' + token
+      })
     }).pipe(
       catchError(this.handleError)
     )

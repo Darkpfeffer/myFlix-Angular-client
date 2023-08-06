@@ -48,6 +48,7 @@
             <div *ngIf="userFavoritesID.includes(movie._id);">
                 <button
                     mat-button
+                    (click)="removeFromFavorites(parsedUserData._id, movie._id)"
                 >
                     <mat-icon>favorite</mat-icon>
                 </button>
