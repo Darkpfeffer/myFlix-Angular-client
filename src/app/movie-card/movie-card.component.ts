@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserRegistrationService } from '../fetch-api-data.service'
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-movie-card',
@@ -16,6 +17,7 @@ export class MovieCardComponent implements OnInit {
 
   constructor(
     public fetchMovies: UserRegistrationService,
+    public snackBar: MatSnackBar,
     private router: Router
   ) { }
 
@@ -58,5 +60,21 @@ export class MovieCardComponent implements OnInit {
     localStorage.removeItem('token');
   }
 
-  addFavorites(): void {}
+  addToFavorites(userID: any, movieID: any): void {
+    this.fetchMovies.addMovieToFavorite(userID, movieID)
+      .subscribe((result) => {
+        console.log(result)
+        this.snackBar.open('Added to favorites', 'OK', {
+          duration: 2000
+        });
+        window.location.reload();
+        localStorage.setItem('user', JSON.stringify(result))
+      }, (result) => {
+        this.snackBar.open('Something went wrong', 'OK', {
+          duration: 2000
+        })
+      })
+  }
+
+
 }

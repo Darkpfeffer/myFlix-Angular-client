@@ -89,13 +89,15 @@ export class UserRegistrationService {
   }
 
   //Making an API request to add a movie to the users favourite list
-  addMovieToFavorite(userID: string, movieID: string): Observable<any> {
+  addMovieToFavorite(userID: string, movieID: any): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.post(apiUrl + 'users/' + userID + '/movies/' + movieID, {
-      headers : new HttpHeaders ({
-        Authorization: 'Bearer' + token
-      }),
-      observe: 'body'
+    let HttpHeader = new HttpHeaders({
+      'Authorization': 'Bearer ' + token
+    }) 
+    return this.http.post(apiUrl + 'users/' + userID + '/movies/' + movieID, '', {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + token
+      })
     }).pipe(
       catchError(this.handleError)
     )

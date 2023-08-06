@@ -55,6 +55,7 @@
             <div *ngIf="!userFavoritesID.includes(movie._id);">
                 <button
                     mat-button
+                    (click)="addToFavorites(parsedUserData._id, movie._id)"
                 >
                     <mat-icon>favorite_border</mat-icon>
                 </button>
