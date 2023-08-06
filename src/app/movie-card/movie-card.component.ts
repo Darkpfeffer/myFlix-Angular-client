@@ -1,7 +1,13 @@
+//import
 import { Component, OnInit } from '@angular/core';
 import { UserRegistrationService } from '../fetch-api-data.service'
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+  //Self-made components
+import { GenreComponent } from '../genre/genre.component';
+import { DirectorComponent } from '../director/director.component';
+import { MovieSummaryComponent } from '../movie-summary/movie-summary.component';
 
 @Component({
   selector: 'app-movie-card',
@@ -17,6 +23,7 @@ export class MovieCardComponent implements OnInit {
 
   constructor(
     public fetchMovies: UserRegistrationService,
+    public dialog: MatDialog,
     public snackBar: MatSnackBar,
     private router: Router
   ) { }
@@ -30,11 +37,11 @@ export class MovieCardComponent implements OnInit {
   parsedMovies = JSON.parse(this.storageMovies);
   userFavoritesID: any[] = this.parsedUserData.FavoriteMovies;
   userFavorites: any [] = [];
+  currentGenre: any
 
   getMovies(): void {
     this.fetchMovies.getAllMovies().subscribe((res: any) => {
       this.movies = res
-      console.log(this.movies);
       localStorage.setItem('movies', JSON.stringify(this.movies))
       return this.movies
     });
@@ -46,7 +53,6 @@ export class MovieCardComponent implements OnInit {
         this.userFavorites.push(this.parsedMovies[i]);
       }
     }
-    console.log(this.userFavorites)
     return this.userFavorites
   }
 
@@ -67,7 +73,10 @@ export class MovieCardComponent implements OnInit {
           duration: 2000
         });
         localStorage.setItem('user', JSON.stringify(result))
-        window.location.reload();
+        this.userFavoritesID = [];
+        this.userFavorites = [];
+        this.userFavoritesID = result.FavoriteMovies;
+        this.filterFavorites();
       }, (result) => {
         this.snackBar.open('Something went wrong', 'OK', {
           duration: 2000
@@ -81,11 +90,47 @@ export class MovieCardComponent implements OnInit {
         duration: 2000
       });
       localStorage.setItem('user', JSON.stringify(result.updatedUser));
-      window.location.reload();
+      this.userFavoritesID = [];
+      this.userFavorites = [];
+      this.userFavoritesID = result.updatedUser.FavoriteMovies;
+      this.filterFavorites();
     }, (result) => {
       this.snackBar.open('Something went wrong', 'OK', {
         duration: 2000
       })
     })
+  }
+
+  //Functions for GenreComponent
+  openGenreModal(): void {
+    this.dialog.open(GenreComponent)
+  }
+
+  setCurrentGenre(movie: any): void {
+    this.currentGenre = movie.Genre;
+    localStorage.setItem('genre', JSON.stringify(this.currentGenre))
+  }
+
+  //Functions for DirectorComponent
+  openDirectorModal(): void {
+    this.dialog.open(DirectorComponent)
+  }
+
+  currentDirector: any;
+  setCurrentDirector(movie: any): void {
+    this.currentDirector = movie.Director;
+    console.log(this.currentDirector)
+    localStorage.setItem('director', JSON.stringify(this.currentDirector));
+  }
+
+  //Functions for MovieSummaryComponent
+  openSummaryModal(): void {
+    this.dialog.open(MovieSummaryComponent)
+  }
+
+  currentSummary: any;
+  setCurrentSummary(movie: any): void {
+    this.currentSummary = movie.Description;
+    localStorage.setItem('summary', JSON.stringify(this.currentSummary))
   }
 }

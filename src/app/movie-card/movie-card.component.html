@@ -30,20 +30,23 @@
             <button
                 mat-button
                 color="primary"
+                (click)="setCurrentGenre(movie); openGenreModal();"
             >
             Genre
             </button>
             <button
                 mat-button
                 color="primary"
+                (click)="setCurrentDirector(movie); openDirectorModal();"
             >
                 Director
             </button>
             <button
                 mat-button
                 color="primary"
+                (click)="setCurrentSummary(movie); openSummaryModal()"
             >
-            Summary
+                Summary
             </button>
             <div *ngIf="userFavoritesID.includes(movie._id);">
                 <button

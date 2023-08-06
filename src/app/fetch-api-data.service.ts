@@ -67,9 +67,8 @@ export class UserRegistrationService {
     const token = localStorage.getItem('token');
     return this.http.get(apiUrl + 'movies/directors/' + directorName, {
       headers: new HttpHeaders({
-        Authorization: 'Bearer' + token
-      }),
-      observe: 'body'
+        Authorization: 'Bearer ' + token
+      })
     }).pipe(
       catchError(this.handleError)
     )
@@ -80,9 +79,8 @@ export class UserRegistrationService {
     const token = localStorage.getItem('token');
     return this.http.get(apiUrl + 'movies/genre/' + genreName, {
       headers: new HttpHeaders({
-        Authorization: 'Bearer' + token
-      }),
-      observe: 'body'
+        Authorization: 'Bearer ' + token
+      })
     }).pipe(
       catchError(this.handleError)
     )

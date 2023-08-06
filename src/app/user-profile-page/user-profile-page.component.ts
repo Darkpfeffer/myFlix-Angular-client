@@ -1,13 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserRegistrationService } from '../fetch-api-data.service'
   //Material
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
   //Self-made components
 import { ChangeUsernameComponent } from '../change-username/change-username.component';
 import { ChangePasswordComponent } from '../change-password/change-password.component';
 import { ChangeEmailComponent } from '../change-email/change-email.component';
 import { ChangeBirthdayComponent } from '../change-birthday/change-birthday.component';
 import { DeleteAccountComponent } from '../delete-account/delete-account.component';
+import { GenreComponent } from '../genre/genre.component';
+import { DirectorComponent } from '../director/director.component';
+import { MovieSummaryComponent } from '../movie-summary/movie-summary.component';
 
 @Component({
   selector: 'app-user-profile-page',
@@ -24,7 +29,9 @@ export class UserProfilePageComponent implements OnInit {
   userFavorites: any [] = [];
 
   constructor(
+    public fetchData: UserRegistrationService,
     public dialog: MatDialog,
+    public snackBar: MatSnackBar,
     private router: Router
   ) {}
 
@@ -74,5 +81,56 @@ export class UserProfilePageComponent implements OnInit {
     this.router.navigate(['welcome']);
     localStorage.removeItem('user');
     localStorage.removeItem('token');
+  }
+
+  removeFromFavorites(userID: any, movieID: any): void {
+    this.fetchData.removeMovieFromFavorite(userID, movieID).subscribe((result) => {
+      this.snackBar.open('Removed from favorites', 'OK', {
+        duration: 2000
+      });
+      localStorage.setItem('user', JSON.stringify(result.updatedUser));
+      this.userFavoritesID = [];
+      this.userFavorites = [];
+      this.userFavoritesID = result.updatedUser.FavoriteMovies;
+      this.filterFavorites();
+    }, (result) => {
+      this.snackBar.open('Something went wrong', 'OK', {
+        duration: 2000
+      })
+    })
+  }
+
+  //Functions for GenreComponent
+  openGenreModal(): void {
+    this.dialog.open(GenreComponent)
+  }
+
+  currentGenre: any;
+  setCurrentGenre(movie: any): void {
+    this.currentGenre = movie.Genre
+    localStorage.setItem('genre', JSON.stringify(this.currentGenre))
+  }
+
+  //Functions for DirectorComponent
+  openDirectorModal(): void {
+    this.dialog.open(DirectorComponent)
+  }
+
+  currentDirector: any;
+  setCurrentDirector(movie: any): void {
+    this.currentDirector = movie.Director;
+    console.log(this.currentDirector)
+    localStorage.setItem('director', JSON.stringify(this.currentDirector));
+  }
+
+  //Functions for MovieSummaryComponent
+  openSummaryModal(): void {
+    this.dialog.open(MovieSummaryComponent)
+  }
+
+  currentSummary: any;
+  setCurrentSummary(movie: any): void {
+    this.currentSummary = movie.Description;
+    localStorage.setItem('summary', JSON.stringify(this.currentSummary))
   }
 }

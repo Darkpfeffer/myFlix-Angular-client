@@ -27,6 +27,9 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { ChangeEmailComponent } from './change-email/change-email.component';
 import { ChangeBirthdayComponent } from './change-birthday/change-birthday.component';
 import { DeleteAccountComponent } from './delete-account/delete-account.component';
+import { GenreComponent } from './genre/genre.component';
+import { DirectorComponent } from './director/director.component';
+import { MovieSummaryComponent } from './movie-summary/movie-summary.component';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
@@ -47,7 +50,10 @@ const appRoutes: Routes = [
     ChangePasswordComponent,
     ChangeEmailComponent,
     ChangeBirthdayComponent,
-    DeleteAccountComponent
+    DeleteAccountComponent,
+    GenreComponent,
+    DirectorComponent,
+    MovieSummaryComponent
   ],
   imports: [
     BrowserModule,

@@ -65,33 +65,30 @@
             <button
                 mat-button
                 color="primary"
+                (click)="setCurrentGenre(favoriteMovie); openGenreModal();"
             >
             Genre
             </button>
             <button
                 mat-button
                 color="primary"
+                (click)="setCurrentDirector(favoriteMovie); openDirectorModal();"
             >
                 Director
             </button>
             <button
                 mat-button
                 color="primary"
+                (click)="setCurrentSummary(favoriteMovie); openSummaryModal()"
             >
             Summary
             </button>
             <div *ngIf="userFavoritesID.includes(favoriteMovie._id);">
                 <button
                     mat-button
+                    (click)="removeFromFavorites(parsedUserData._id, favoriteMovie._id)"
                 >
                     <mat-icon>favorite</mat-icon>
-                </button>
-            </div>
-            <div *ngIf="!userFavoritesID.includes(favoriteMovie._id);">
-                <button
-                    mat-button
-                >
-                    <mat-icon>favorite_border</mat-icon>
                 </button>
             </div>
         </mat-card-actions>
