@@ -237,7 +237,6 @@ export class UserProfilePageComponent implements OnInit {
   currentDirector: any;
   setCurrentDirector(movie: any): void {
     this.currentDirector = movie.Director;
-    console.log(this.currentDirector)
     localStorage.setItem('director', JSON.stringify(this.currentDirector));
   }
 
