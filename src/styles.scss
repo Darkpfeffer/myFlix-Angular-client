@@ -41,3 +41,139 @@ $myFlix-Angular-client-theme: mat.define-light-theme((
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+//self-written css
+.main-page {
+  padding: 10px;
+  width: 300px;
+  margin: auto;
+}
+
+.menu-button__first {
+  margin-left: 60px;
+}
+
+.menu-button {
+  margin-left: 10px;
+}
+
+.button-end-screen {
+  margin-top: 5px;
+  margin-left: 90%;
+}
+
+.button-start-screen {
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+.mat-card-div {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.mat-card {
+  max-width: 400px;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.mat-subtitle {
+  margin-top: 2px;
+}
+
+.movie-img {
+  margin-top: 10px;
+  max-height: 300px;
+}
+
+.user-div {
+  margin-left: 10px;
+}
+
+@media all and (max-width: 1965px) {
+  .button-end-screen {
+    margin-left: 89%;
+  }
+}
+
+@media all and (max-width: 1790px) {
+  .button-end-screen {
+    margin-left: 87%;
+  }
+}
+
+@media all and (max-width: 1512px) {
+  .button-end-screen {
+    margin-left: 85%;
+  }
+}
+
+@media all and (max-width: 1313px) {
+  .button-end-screen {
+    margin-left: 83%;
+  }
+}
+
+@media all and (max-width: 1176px) {
+  .button-end-screen {
+    margin-left: 80%;
+  }
+}
+
+@media all and (max-width: 1000px) {
+  .button-end-screen {
+    margin-left: 75%;
+  }
+}
+
+@media all and (max-width: 805px) {
+  .button-end-screen {
+    margin-left: 70%;
+  }
+}
+
+@media all and (max-width: 675px) {
+  .button-end-screen {
+    margin-left: 65%;
+  }
+}
+
+@media all and (max-width: 580px) {
+  .button-end-screen {
+    margin-left: 60%;
+  }
+}
+
+@media all and (max-width: 510px) {
+  .button-end-screen {
+    margin-left: 30px;
+  }
+}
+
+@media all and (max-width: 405px) {
+  .mat-card {
+    max-width: 250px;
+  }
+}
+
+@media all and (max-width: 300px) {
+  .main-page {
+    width: 150px;
+  }
+
+  .menu-button__first {
+    margin-left: 10px;
+    margin-bottom: 10px;
+  }
+
+  .menu-button {
+    margin-left: 10px;
+  }
+}
+
+@media all and (max-width: 200px) {
+  .button-end-screen {
+    margin-left: 10px;
+  }
+}

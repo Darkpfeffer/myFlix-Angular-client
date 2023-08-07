@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserRegistrationService } from '../fetch-api-data.service'
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
   //Material
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -32,11 +33,128 @@ export class UserProfilePageComponent implements OnInit {
     public fetchData: UserRegistrationService,
     public dialog: MatDialog,
     public snackBar: MatSnackBar,
-    private router: Router
+    private router: Router,
+    private observer: BreakpointObserver
   ) {}
+
+  //for styling
+  gridColumnSpan: Number = 12;
+  gridRowSpan: Number = 24;
 
   ngOnInit(): void {
     this.filterFavorites();
+
+    this.observer.observe(Breakpoints.XSmall).subscribe((result) => {
+      if(result.matches) {
+        this.gridColumnSpan = 12;
+        this.gridRowSpan = 12;
+      }
+    })
+
+    this.observer.observe('(min-width: 461px)').subscribe((result) => {
+      if(result.matches) {
+        this.gridColumnSpan = 12;
+        this.gridRowSpan = 12;
+      }
+    })
+
+    this.observer.observe('(min-width: 381px) and (max-width: 460px)').subscribe((result) => {
+      if(result.matches) {
+        this.gridColumnSpan = 12;
+        this.gridRowSpan = 15;
+      }
+    })
+
+    this.observer.observe('(min-width: 301px) and (max-width: 380px)').subscribe((result) => {
+      if(result.matches) {
+        this.gridColumnSpan = 12;
+        this.gridRowSpan = 20;
+      }
+    })
+
+    this.observer.observe('(min-width: 251px) and (max-width: 300px)').subscribe((result) => {
+      if(result.matches) {
+        this.gridColumnSpan = 12;
+        this.gridRowSpan = 24;
+      }
+    })
+
+    this.observer.observe('(max-width: 250px)').subscribe((result) => {
+      if(result.matches) {
+        this.gridColumnSpan = 12;
+        this.gridRowSpan = 30;
+      }
+    })
+
+    this.observer.observe(Breakpoints.Small).subscribe(result => {
+      if(result.matches) {
+        this.gridColumnSpan = 6;
+        this.gridRowSpan = 7;
+      }
+    })
+
+    this.observer.observe('(min-width: 781px)').subscribe((result) => {
+      if(result.matches) {
+        this.gridColumnSpan = 6;
+        this.gridRowSpan = 7;
+      }
+    })
+
+    this.observer.observe('(min-width: 600px) and (max-width: 780px)').subscribe((result) => {
+      if(result.matches) {
+        this.gridColumnSpan = 6;
+        this.gridRowSpan= 10;
+      }
+    })
+
+    this.observer.observe(Breakpoints.Medium).subscribe(result => {
+      if(result.matches) {
+        this.gridColumnSpan = 4;
+        this.gridRowSpan = 5;
+      }
+    })
+
+    this.observer.observe('(min-width: 1151px)').subscribe(result => {
+      if(result.matches) {
+        this.gridColumnSpan = 4;
+        this.gridRowSpan = 5;
+      }
+    })
+
+    this.observer.observe('(min-width: 960px) and (max-width: 1150px)').subscribe(result => {
+      if(result.matches) {
+        this.gridColumnSpan = 4;
+        this.gridRowSpan = 7;
+      }
+    })  
+
+    this.observer.observe(Breakpoints.Large).subscribe(result => {
+      if(result.matches) {
+        this.gridColumnSpan = 3;
+        this.gridRowSpan = 3;
+      }
+    })
+
+    this.observer.observe('(min-width: 1401px) and (max-width: 1770px)').subscribe(result => {
+      if(result.matches) {
+        this.gridColumnSpan = 3;
+        this.gridRowSpan = 4;
+      }
+    })
+
+    this.observer.observe('(min-width: 1280px) and (max-width: 1400px)').subscribe(result => {
+      if(result.matches) {
+        this.gridColumnSpan = 3;
+        this.gridRowSpan = 5;
+      }
+    })  
+
+    this.observer.observe(Breakpoints.XLarge).subscribe(result => {
+      if(result.matches) {
+        this.gridColumnSpan = 2;
+        this.gridRowSpan = 3;
+      }
+    })
   }
 
   filterFavorites() : any[] {

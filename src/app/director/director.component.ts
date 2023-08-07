@@ -31,7 +31,6 @@ export class DirectorComponent implements OnInit {
 
   getDirector(): void { 
     this.fetchApiData.getDirector(this.string).subscribe((result: any) => {
-      console.log(result)
       this.fetchedDirector = result;
     }, (error: any) => {
       console.log(error)
