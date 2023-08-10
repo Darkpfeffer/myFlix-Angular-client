@@ -11,6 +11,9 @@ const apiUrl = 'https://myflix-5sws.onrender.com/'
 @Injectable({
   providedIn: 'root'
 })
+/**
+ * This class contains all the API requests will be made 
+ * */
 export class UserRegistrationService {
   // Inject the HttpClient module to the constructor params
   // This will provide HttpClient to the entire class
