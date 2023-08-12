@@ -1,77 +1,64 @@
 <!DOCTYPE html>
-<button
-    mat-raised-button
-    color="primary"
-    (click)="navigateToProfile()"
-    class="button-start-screen"
->
+<button mat-raised-button color="primary" (click)="navigateToProfile()" class="button-start-screen">
     Profile
 </button>
-<button
-    mat-raised-button
-    color="primary"
-    (click)="logout()"
-    class="button-end-screen"
->
+<button mat-raised-button color="primary" (click)="logout()" class="button-end-screen">
     Logout
 </button>
 <mat-grid-list class="mat-card-div" cols="12">
-    <mat-grid-tile
-        *ngFor="let movie of movies;"
-        colspan={{gridColumnSpan}}
+    <mat-grid-tile *ngFor="let movie of movies;" 
+        colspan={{gridColumnSpan}} 
         rowspan={{gridRowSpan}}
     >
-    <mat-card 
-        class="mat-card"
-        >
-        <mat-card-header>
-            <mat-card-title>{{movie.Title}}</mat-card-title>
-            <mat-card-subtitle class="mat-subtitle">
-                Driected by: {{ movie.Director.Name}}
-            </mat-card-subtitle>
-        </mat-card-header>
-        <mat-dialog-content>
-            <img src="{{movie.ImageURL}}" alt="{{movie.Title}}" class="movie-img"/>
-        </mat-dialog-content>
-        <mat-card-actions>
-            <button
-                mat-button
-                color="primary"
-                (click)="setCurrentGenre(movie); openGenreModal();"
-            >
-            Genre
-            </button>
-            <button
-                mat-button
-                color="primary"
-                (click)="setCurrentDirector(movie); openDirectorModal();"
-            >
-                Director
-            </button>
-            <button
-                mat-button
-                color="primary"
-                (click)="setCurrentSummary(movie); openSummaryModal()"
-            >
-                Summary
-            </button>
-            <div *ngIf="userFavoritesID.includes(movie._id);">
-                <button
-                    mat-button
-                    (click)="removeFromFavorites(parsedUserData._id, movie._id)"
+        <mat-card class="mat-card">
+            <mat-card-header>
+                <mat-card-title>{{movie.Title}}</mat-card-title>
+                <mat-card-subtitle class="mat-subtitle">
+                    Driected by: {{ movie.Director.Name}}
+                </mat-card-subtitle>
+            </mat-card-header>
+            <mat-dialog-content>
+                <img src="{{movie.ImageURL}}" alt="{{movie.Title}}" class="movie-img" />
+            </mat-dialog-content>
+            <mat-card-actions>
+                <button 
+                    mat-button color="primary" 
+                    (click)="setCurrentGenre(movie); 
+                    openGenreModal();"
                 >
-                    <mat-icon>favorite</mat-icon>
+                    Genre
                 </button>
-            </div>
-            <div *ngIf="!userFavoritesID.includes(movie._id);">
-                <button
-                    mat-button
-                    (click)="addToFavorites(parsedUserData._id, movie._id)"
+                <button 
+                    mat-button color="primary" 
+                    (click)="setCurrentDirector(movie); 
+                    openDirectorModal();"
                 >
-                    <mat-icon>favorite_border</mat-icon>
+                    Director
                 </button>
-            </div>
-        </mat-card-actions>
-    </mat-card>
+                <button 
+                    mat-button color="primary" 
+                    (click)="setCurrentSummary(movie); 
+                    openSummaryModal()"
+                >
+                    Summary
+                </button>
+                <div *ngIf="userFavoritesID.includes(movie._id);">
+                    <button 
+                        mat-button 
+                        (click)="removeFromFavorites(parsedUserData._id, movie._id)"
+                    >
+                        <mat-icon>favorite</mat-icon>
+                    </button>
+                </div>
+                <div *ngIf="!userFavoritesID.includes(movie._id);">
+                    <button 
+                        mat-button 
+                        (click)="addToFavorites(parsedUserData._id, movie._id)"
+                    >
+                        <mat-icon>favorite_border</mat-icon>
+                    </button>
+                </div>
+            </mat-card-actions>
+        </mat-card>
     </mat-grid-tile>
 </mat-grid-list>

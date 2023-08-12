@@ -1,11 +1,12 @@
+/** Importing */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserRegistrationService } from '../fetch-api-data.service'
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-  //Material
+  /** Importing Material */
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-  //Self-made components
+  /** Importing self-made components*/
 import { ChangeUsernameComponent } from '../change-username/change-username.component';
 import { ChangePasswordComponent } from '../change-password/change-password.component';
 import { ChangeEmailComponent } from '../change-email/change-email.component';
@@ -20,7 +21,11 @@ import { MovieSummaryComponent } from '../movie-summary/movie-summary.component'
   templateUrl: './user-profile-page.component.html',
   styleUrls: ['./user-profile-page.component.scss']
 })
+
+/** This component handles the information of the user */
 export class UserProfilePageComponent implements OnInit {
+
+  /** Declaring variables */
   userData: any = localStorage.getItem('user');
   parsedUserData = JSON.parse(this.userData);
   userBirthday = new Date(this.parsedUserData.Birthday).toLocaleDateString();
@@ -29,6 +34,7 @@ export class UserProfilePageComponent implements OnInit {
   userFavoritesID: any[] = this.parsedUserData.FavoriteMovies;
   userFavorites: any [] = [];
 
+  /** Declaring variables for components injected to this components */
   constructor(
     public fetchData: UserRegistrationService,
     public dialog: MatDialog,
@@ -37,13 +43,15 @@ export class UserProfilePageComponent implements OnInit {
     private observer: BreakpointObserver
   ) {}
 
-  //for styling
+  /** Variables for styling */
   gridColumnSpan: Number = 12;
   gridRowSpan: Number = 24;
 
+  /** Running functions on initiating the component */
   ngOnInit(): void {
     this.filterFavorites();
 
+    /** Sets the resolution of the movie cards */
     this.observer.observe(Breakpoints.XSmall).subscribe((result) => {
       if(result.matches) {
         this.gridColumnSpan = 12;
@@ -157,6 +165,7 @@ export class UserProfilePageComponent implements OnInit {
     })
   }
 
+  /** This function keeps only the user's favorite movies from all movies */
   filterFavorites() : any[] {
     for(let i= 0; i < this.movies.length; i++) {
       if (this.userFavoritesID.includes(this.movies[i]._id)) {
@@ -166,86 +175,101 @@ export class UserProfilePageComponent implements OnInit {
     return this.userFavorites
   }
 
+  /** Navigating to all movies when the 'Back to Movies' button is pressed */
   navigateToMovieList(): void{
     this.router.navigate(['movies']);
   }
 
-  //Opens change username modal
+  /** Opens change username modal */
   openChangeUsernameModal(): void {
     this.dialog.open(ChangeUsernameComponent)
   }
 
-  //Opens change password modal
+  /** Opens change password modal */
   openChangePasswordModal(): void {
     this.dialog.open(ChangePasswordComponent)
   }
 
-  //Opens change email modal
+  /** Opens change email modal */
   openChangeEmailModal(): void {
     this.dialog.open(ChangeEmailComponent)
   }
 
-  //Opens change birthday modal
+  /** Opens change birthday modal */
   openChangeBirthdayModal(): void {
     this.dialog.open(ChangeBirthdayComponent)
   }
 
-  //Opens delete account modal
+  /** Opens delete account modal */
   openDeleteAccountModal(): void {
     this.dialog.open(DeleteAccountComponent)
   }
 
+  /** Navigates back to 'Welcome' page when the 'Logout' button is pressed */
   logout(): void {
     this.router.navigate(['welcome']);
     localStorage.removeItem('user');
     localStorage.removeItem('token');
   }
 
+  /** 
+   * This function removes the movie from the user's favorite list when the 'full heart'
+   * button is pressed.
+   */
   removeFromFavorites(userID: any, movieID: any): void {
-    this.fetchData.removeMovieFromFavorite(userID, movieID).subscribe((result) => {
-      this.snackBar.open('Removed from favorites', 'OK', {
-        duration: 2000
-      });
-      localStorage.setItem('user', JSON.stringify(result.updatedUser));
-      this.userFavoritesID = [];
-      this.userFavorites = [];
-      this.userFavoritesID = result.updatedUser.FavoriteMovies;
-      this.filterFavorites();
-    }, (result) => {
-      this.snackBar.open('Something went wrong', 'OK', {
-        duration: 2000
-      })
+    this.fetchData.removeMovieFromFavorite(userID, movieID)
+      /** Logic at success of the function */
+      .subscribe((result) => {
+        this.snackBar.open('Removed from favorites', 'OK', {
+          duration: 2000
+        });
+        localStorage.setItem('user', JSON.stringify(result.updatedUser));
+        this.userFavoritesID = [];
+        this.userFavorites = [];
+        this.userFavoritesID = result.updatedUser.FavoriteMovies;
+        this.filterFavorites();
+      /** Logic at fail of the function */
+      }, (result) => {
+        this.snackBar.open('Something went wrong', 'OK', {
+          duration: 2000
+        })
     })
   }
 
-  //Functions for GenreComponent
+  /** This function opens GenreComponent */
   openGenreModal(): void {
     this.dialog.open(GenreComponent)
   }
 
   currentGenre: any;
+  /** This function uses the data of the genre where the 'Genre' button was pressed */
   setCurrentGenre(movie: any): void {
     this.currentGenre = movie.Genre
     localStorage.setItem('genre', JSON.stringify(this.currentGenre))
   }
 
-  //Functions for DirectorComponent
+  /** This function opens DirectorComponent */ 
   openDirectorModal(): void {
     this.dialog.open(DirectorComponent)
   }
 
   currentDirector: any;
+  /** This function uses the current director where the 'Director' button was pressed */
   setCurrentDirector(movie: any): void {
     this.currentDirector = movie.Director;
     localStorage.setItem('director', JSON.stringify(this.currentDirector));
   }
 
-  //Functions for MovieSummaryComponent
+  /** This function opens MovieSummaryComponent */
   openSummaryModal(): void {
     this.dialog.open(MovieSummaryComponent)
   }
 
   currentSummary: any;
+  /** 
+   * This function uses the current summary of the movie where the 'Summary' button 
+   * was pressed 
+   */
   setCurrentSummary(movie: any): void {
     this.currentSummary = movie.Description;
     localStorage.setItem('summary', JSON.stringify(this.currentSummary))

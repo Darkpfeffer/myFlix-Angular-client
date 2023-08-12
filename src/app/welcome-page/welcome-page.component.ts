@@ -1,8 +1,8 @@
+/** Importing */
 import { Component, OnInit } from '@angular/core';
-  // Material
+/** Importing Material */
 import { MatDialog } from '@angular/material/dialog';
-
-//Self made components
+/** Importing Self-Made Components */
 import { UserRegistrationFormComponent } from '../user-registration-form/user-registration-form.component';
 import { UserLoginFormComponent } from '../user-login-form/user-login-form.component';
 
@@ -13,11 +13,11 @@ import { UserLoginFormComponent } from '../user-login-form/user-login-form.compo
 })
 export class WelcomePageComponent implements OnInit {
   constructor(public dialog: MatDialog) { }
-
+  /** @ignore */
   ngOnInit(): void {
   }
 
-  //Opens the dialog when the signup button is clicked
+  /** Opens the dialog when the 'Sign up' button is clicked */
   openUserRegistrationDialog(): void {
     this.dialog.open(UserRegistrationFormComponent, {
       //Assigning dialog width
@@ -25,7 +25,7 @@ export class WelcomePageComponent implements OnInit {
     });
   }
 
-  //Opens the dialog when login button is clicked
+  /** Opens the dialog when the 'Login' button is clicked */
   openUserLoginDialog(): void {
     this.dialog.open(UserLoginFormComponent, {
       //Assigning dialog width

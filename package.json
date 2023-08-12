@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "deploy": "ng deploy --base-href=/myFlix-Angular-client/",
-    "docs": "typedoc --tsconfig ./typedoc.json --exclude '**/*.spec.ts' --out ./docs",
+    "docs": "npx typedoc --out ./src/assets/docs",
     "typedoc": "typedoc"
   },
   "private": true,

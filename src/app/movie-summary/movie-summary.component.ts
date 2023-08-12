@@ -1,3 +1,4 @@
+/** Importing */
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 
@@ -7,6 +8,7 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./movie-summary.component.scss']
 })
 
+/** This component used to display movie summary */
 export class MovieSummaryComponent implements OnInit {
   summary: any = localStorage.getItem('summary')
   parsedSummary: any = JSON.parse(this.summary)
@@ -15,6 +17,7 @@ export class MovieSummaryComponent implements OnInit {
     public dialogRef: MatDialogRef<MovieSummaryComponent>
   ) {}
 
+  /** @ignore */
   ngOnInit(): void {
     
   }
