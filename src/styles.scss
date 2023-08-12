@@ -12,8 +12,8 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$myFlix-Angular-client-primary: mat.define-palette(mat.$indigo-palette);
-$myFlix-Angular-client-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$myFlix-Angular-client-primary: mat.define-palette(mat.$deep-purple-palette);
+$myFlix-Angular-client-accent: mat.define-palette(mat.$amber-palette, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
 $myFlix-Angular-client-warn: mat.define-palette(mat.$red-palette);
@@ -31,9 +31,149 @@ $myFlix-Angular-client-theme: mat.define-light-theme((
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
 @include mat.all-component-themes($myFlix-Angular-client-theme);
 
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+//self-written css
+.main-page {
+  padding: 10px;
+  width: 300px;
+  margin: auto;
+}
+
+.menu-button__first {
+  margin-left: 60px;
+}
+
+.menu-button {
+  margin-left: 10px;
+}
+
+.button-end-screen {
+  margin-top: 5px;
+  margin-left: 90%;
+}
+
+.button-start-screen {
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+.mat-card-div {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.mat-card {
+  max-width: 400px;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.mat-subtitle {
+  margin-top: 2px;
+}
+
+.movie-img {
+  margin-top: 10px;
+  max-height: 300px;
+}
+
+.user-div {
+  margin-left: 10px;
+}
+
+@media all and (max-width: 1965px) {
+  .button-end-screen {
+    margin-left: 89%;
+  }
+}
+
+@media all and (max-width: 1790px) {
+  .button-end-screen {
+    margin-left: 87%;
+  }
+}
+
+@media all and (max-width: 1512px) {
+  .button-end-screen {
+    margin-left: 85%;
+  }
+}
+
+@media all and (max-width: 1313px) {
+  .button-end-screen {
+    margin-left: 83%;
+  }
+}
+
+@media all and (max-width: 1176px) {
+  .button-end-screen {
+    margin-left: 80%;
+  }
+}
+
+@media all and (max-width: 1000px) {
+  .button-end-screen {
+    margin-left: 75%;
+  }
+}
+
+@media all and (max-width: 805px) {
+  .button-end-screen {
+    margin-left: 70%;
+  }
+}
+
+@media all and (max-width: 675px) {
+  .button-end-screen {
+    margin-left: 65%;
+  }
+}
+
+@media all and (max-width: 580px) {
+  .button-end-screen {
+    margin-left: 60%;
+  }
+}
+
+@media all and (max-width: 510px) {
+  .button-end-screen {
+    margin-left: 30px;
+  }
+}
+
+@media all and (max-width: 405px) {
+  .mat-card {
+    max-width: 250px;
+  }
+}
+
+@media all and (max-width: 300px) {
+  .main-page {
+    width: 150px;
+  }
+
+  .menu-button__first {
+    margin-left: 10px;
+    margin-bottom: 10px;
+  }
+
+  .menu-button {
+    margin-left: 10px;
+  }
+}
+
+@media all and (max-width: 200px) {
+  .button-end-screen {
+    margin-left: 10px;
+  }
+}
