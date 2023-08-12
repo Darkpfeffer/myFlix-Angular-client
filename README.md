@@ -37,6 +37,9 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
+## Documentation generated with TypeDoc
+https://darkpfeffer.github.io/myFlix-Angular-client/assets/docs/index.html
+
 ## User stories
 - As a user, I want to be able to receive information on movies, directors, and genres so that I can learn more about movies I’ve watched or am interested in.
 
